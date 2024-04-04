@@ -1,3 +1,5 @@
+import { List } from "@chakra-ui/react";
+
 export const KanbanList = () => {
-  return <div>KanbanList</div>;
+  return <List></List>;
 };
