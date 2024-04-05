@@ -20,6 +20,8 @@ const issueSlice = createSlice({
       state.repoInfo.repoUrl = action.payload.html_url;
     });
     builder.addCase(fetchUserRepoIsses.fulfilled, (state, action) => {
+      console.log(action.payload);
+
       const filteredIssue: Issue[] = [];
 
       action.payload.forEach((issue: any) => {
