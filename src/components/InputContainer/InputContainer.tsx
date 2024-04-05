@@ -1,11 +1,11 @@
 import { Button, Flex, Input, useToast } from "@chakra-ui/react";
 import { ChangeEvent, useState } from "react";
-import { getUsernameAndRepo } from "../../helpers/getUsernameAndRepo";
 import { useAppDispatch } from "../../redux/store";
 import {
   fetchUserRepoInfo,
   fetchUserRepoIsses,
 } from "../../redux/issue/operations";
+import getUsernameAndRepo from "../../helpers/getUsernameAndRepo";
 
 export const InputContainer = () => {
   const [repoUrl, setRepoUrl] = useState<string>("");
@@ -39,6 +39,7 @@ export const InputContainer = () => {
       <Input
         value={repoUrl}
         variant="outline"
+        outline="teal.500"
         placeholder="Enter repo URL"
         onChange={handleInputChange}
       />

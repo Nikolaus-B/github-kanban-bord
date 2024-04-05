@@ -1,3 +1,5 @@
-import { appSelector } from "../store";
+import { RootState } from "../store";
 
-export const issues = appSelector((state) => state.issues.issues);
+export const selectIssues = (state: RootState) => state.issues.issues;
+
+export const selectRepoInfo = (state: RootState) => state.issues.repoInfo;

@@ -1,4 +1,4 @@
-export function getUsernameAndRepo(url: string): {
+function getUsernameAndRepo(url: string): {
   username: string;
   repoName: string;
 } {
@@ -7,3 +7,5 @@ export function getUsernameAndRepo(url: string): {
   const repoName = urlParts[urlParts.length - 1];
   return { username, repoName };
 }
+
+export default getUsernameAndRepo;

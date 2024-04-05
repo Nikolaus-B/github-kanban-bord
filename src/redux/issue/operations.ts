@@ -9,12 +9,10 @@ interface FetchRepoArgs {
 }
 
 export const fetchUserRepoInfo = createAsyncThunk(
-  "issues/fetchAll",
+  "repoInfo/fetchInfo",
   async ({ username, repoName }: FetchRepoArgs, thunkAPI) => {
     try {
       const response = await axios.get(`/${username}/${repoName}`);
-      console.log(response.data);
-
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue((e as Error).message);
@@ -27,8 +25,6 @@ export const fetchUserRepoIsses = createAsyncThunk(
   async ({ username, repoName }: FetchRepoArgs, thunkAPI) => {
     try {
       const response = await axios.get(`/${username}/${repoName}/issues`);
-      console.log(response.data);
-
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue((e as Error).message);
