@@ -11,9 +11,9 @@ export const Layout = () => {
         <Info />
       </Flex>
       <SimpleGrid spacing={10} minChildWidth="350px" mt="30px">
-        <KanbanList title={"ToDo"} type={"open"} />
-        <KanbanList title={"In Progress"} type={"inProgress"} />
-        <KanbanList title={"Done"} type={"closed"} />
+        <KanbanList title={"ToDo"} />
+        <KanbanList title={"In Progress"} />
+        <KanbanList title={"Done"} />
       </SimpleGrid>
     </Container>
   );

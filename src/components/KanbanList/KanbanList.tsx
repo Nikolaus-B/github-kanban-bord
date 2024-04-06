@@ -3,10 +3,9 @@ import { KanbanItem } from "../KanbanItem/KanbanItem";
 
 interface KanbanListProps {
   title: string;
-  type: string;
 }
 
-export const KanbanList: React.FC<KanbanListProps> = ({ title, type }) => {
+export const KanbanList: React.FC<KanbanListProps> = ({ title }) => {
   return (
     <Flex
       flexDirection="column"
