@@ -27,9 +27,6 @@ export const KanbanList: React.FC<KanbanListProps> = ({ title, type }) => {
         h="400px"
         p="15px"
         bgColor="gray.300"
-        css={{
-          overflowY: "scroll", // Встановлюємо прокрутку по вертикалі за допомогою стилів CSS
-        }}
       >
         <KanbanItem />
         <KanbanItem />
