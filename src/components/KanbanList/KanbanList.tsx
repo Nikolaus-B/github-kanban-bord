@@ -1,11 +1,13 @@
-import { Flex, List, Text } from "@chakra-ui/react";
+import { Box, Flex, List, Text } from "@chakra-ui/react";
 import { KanbanItem } from "../KanbanItem/KanbanItem";
+import { Issue } from "../../redux/issue/issue";
 
 interface KanbanListProps {
   title: string;
+  issues: Issue[];
 }
 
-export const KanbanList: React.FC<KanbanListProps> = ({ title }) => {
+export const KanbanList: React.FC<KanbanListProps> = ({ title, issues }) => {
   return (
     <Flex
       flexDirection="column"
@@ -17,19 +19,21 @@ export const KanbanList: React.FC<KanbanListProps> = ({ title }) => {
       <Text fontSize={20} fontWeight={500}>
         {title}
       </Text>
-      <List
-        display="flex"
-        flexDirection="column"
-        flexWrap="nowrap"
-        gap={5}
-        w="300px"
-        h="400px"
-        p="15px"
-        bgColor="gray.300"
-      >
-        <KanbanItem />
-        <KanbanItem />
-      </List>
+      <Box padding="20px 20px" bgColor="gray.400">
+        <List
+          display="flex"
+          gap={5}
+          padding="0px 10px"
+          w="400px"
+          h="500px"
+          flexDir="column"
+          overflowY="auto"
+        >
+          {issues.map((issue: Issue) => {
+            return <KanbanItem key={issue.id} issueInfo={issue} />;
+          })}
+        </List>
+      </Box>
     </Flex>
   );
 };

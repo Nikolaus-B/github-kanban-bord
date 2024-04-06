@@ -6,6 +6,7 @@ export interface Issue {
   comments: number;
   author: string;
   completed: string;
+  issueUrl: string;
 }
 
 interface RepoInfo {

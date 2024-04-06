@@ -33,6 +33,7 @@ const issueSlice = createSlice({
           comments: issue.comments,
           author: issue.author_association,
           completed: issue.state,
+          issueUrl: issue.html_url,
         });
       });
 
