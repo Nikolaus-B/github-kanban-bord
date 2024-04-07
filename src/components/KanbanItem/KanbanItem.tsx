@@ -1,4 +1,4 @@
-import { Box, Link, ListItem, Text } from "@chakra-ui/react";
+import { Box, Link, Text } from "@chakra-ui/react";
 import { Issue } from "../../redux/issue/issue";
 import daysAgoFromDate from "../../helpers/daysAgoFromDate";
 
@@ -10,7 +10,7 @@ export const KanbanItem: React.FC<KanbanItemProps> = ({ issueInfo }) => {
   const { title, issueNumber, createdAt, comments, author, issueUrl } =
     issueInfo;
   return (
-    <ListItem
+    <Box
       display="flex"
       flexDir="column"
       gap={5}
@@ -40,6 +40,6 @@ export const KanbanItem: React.FC<KanbanItemProps> = ({ issueInfo }) => {
         <Box w="2px" height="auto" bgColor="black" />
         <Text>{`Comments: ${comments}`}</Text>
       </Box>
-    </ListItem>
+    </Box>
   );
 };
