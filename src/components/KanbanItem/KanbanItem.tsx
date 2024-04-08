@@ -1,5 +1,5 @@
 import { Box, Link, Text } from "@chakra-ui/react";
-import { Issue } from "../../redux/issue/issue";
+import { Issue } from "../../interfaces/Issue";
 import daysAgoFromDate from "../../helpers/daysAgoFromDate";
 
 interface KanbanItemProps {

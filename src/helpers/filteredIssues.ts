@@ -1,4 +1,4 @@
-import { Issue } from "../redux/issue/issue";
+import { Issue } from "../interfaces/Issue";
 
 function filteredIssues(issues: Issue[], completedState: string): Issue[] {
   const filteredIssues: Issue[] = [];

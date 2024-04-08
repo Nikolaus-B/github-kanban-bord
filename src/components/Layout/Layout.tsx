@@ -6,10 +6,7 @@ import filteredIssues from "../../helpers/filteredIssues";
 import { appSelector, useAppDispatch } from "../../redux/store";
 import { selectIssues } from "../../redux/issue/issueSelectors";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
-import {
-  changeIssueCompletedState,
-  reorderIssue,
-} from "../../redux/issue/issueSlice";
+import { changeIssueCompletedState } from "../../redux/issue/issueSlice";
 
 export const Layout = () => {
   const issues = appSelector(selectIssues);
@@ -24,14 +21,7 @@ export const Layout = () => {
       return;
     }
 
-    if (source.droppableId === destination.droppableId) {
-      dispatch(
-        reorderIssue({
-          startIndex: source.index,
-          endIndex: destination.index,
-        })
-      );
-    } else {
+    if (source.droppableId !== destination.droppableId) {
       dispatch(
         changeIssueCompletedState({
           id: dropableIssue,
