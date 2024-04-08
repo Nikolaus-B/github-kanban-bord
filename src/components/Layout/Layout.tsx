@@ -4,12 +4,12 @@ import { Info } from "../Info/Info";
 import { KanbanList } from "../KanbanList/KanbanList";
 import filteredIssues from "../../helpers/filteredIssues";
 import { appSelector, useAppDispatch } from "../../redux/store";
-import { selectIssues } from "../../redux/issue/issueSelectors";
+import { selectCurrentRepo } from "../../redux/issue/issueSelectors";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { changeIssueCompletedState } from "../../redux/issue/issueSlice";
 
 export const Layout = () => {
-  const issues = appSelector(selectIssues);
+  const { issues } = appSelector(selectCurrentRepo);
   const dispatch = useAppDispatch();
 
   const handleDragEnd = (result: DropResult) => {

@@ -7,8 +7,14 @@ import {
 } from "../../redux/issue/operations";
 import getUsernameAndRepo from "../../helpers/getUsernameAndRepo";
 
+// interface InputContainerProps {
+//   repoUrl: string;
+//   onRepoSearchSubmit: (arg: string) => void;
+// }
+
 export const InputContainer = () => {
   const [repoUrl, setRepoUrl] = useState<string>("");
+
   const toast = useToast();
   const dispatch = useAppDispatch();
 
@@ -19,7 +25,11 @@ export const InputContainer = () => {
   const handleClick = () => {
     if (repoUrl.startsWith("https://")) {
       const { username, repoName } = getUsernameAndRepo(repoUrl);
-      const userInfo = { username: username, repoName: repoName };
+      const userInfo = {
+        username: username,
+        repoName: repoName,
+        repoUrl: repoUrl,
+      };
 
       dispatch(fetchUserRepoInfo(userInfo));
       dispatch(fetchUserRepoIsses(userInfo));

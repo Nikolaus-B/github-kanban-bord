@@ -6,6 +6,7 @@ axios.defaults.baseURL = "https://api.github.com/repos/";
 interface FetchRepoArgs {
   username: string;
   repoName: string;
+  repoUrl: string;
 }
 
 export const fetchUserRepoInfo = createAsyncThunk(
@@ -22,10 +23,10 @@ export const fetchUserRepoInfo = createAsyncThunk(
 
 export const fetchUserRepoIsses = createAsyncThunk(
   "issues/fetchAll",
-  async ({ username, repoName }: FetchRepoArgs, thunkAPI) => {
+  async ({ username, repoName, repoUrl }: FetchRepoArgs, thunkAPI) => {
     try {
       const response = await axios.get(`/${username}/${repoName}/issues`);
-      return response.data;
+      return { issues: response.data, repoUrl: repoUrl };
     } catch (e) {
       return thunkAPI.rejectWithValue((e as Error).message);
     }
