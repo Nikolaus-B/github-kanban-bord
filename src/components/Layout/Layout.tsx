@@ -2,61 +2,42 @@ import { Container, Flex, SimpleGrid } from "@chakra-ui/react";
 import { InputContainer } from "../InputContainer/InputContainer";
 import { Info } from "../Info/Info";
 import { KanbanList } from "../KanbanList/KanbanList";
-import filterIssues from "../../helpers/filterIssues";
+import filteredIssues from "../../helpers/filteredIssues";
 import { appSelector, useAppDispatch } from "../../redux/store";
 import { selectIssues } from "../../redux/issue/issueSelectors";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
-
-import { useEffect, useState } from "react";
-import { appendAt, remove, reorder } from "../../helpers/dragNDropUtils";
+import {
+  changeIssueCompletedState,
+  reorderIssue,
+} from "../../redux/issue/issueSlice";
 
 export const Layout = () => {
   const issues = appSelector(selectIssues);
   const dispatch = useAppDispatch();
 
-  const [filteredIssues, setFilteredIssues] = useState(filterIssues(issues));
-
-  useEffect(() => {
-    setFilteredIssues(filterIssues(issues));
-  }, [issues]);
-
   const handleDragEnd = (result: DropResult) => {
     const source = result.source;
     const destination = result.destination;
+    const dropableIssue = result.draggableId;
 
     if (!destination) {
       return;
     }
 
     if (source.droppableId === destination.droppableId) {
-      const items = reorder(
-        [...filteredIssues[source.droppableId]],
-        source.index,
-        destination.index
+      dispatch(
+        reorderIssue({
+          startIndex: source.index,
+          endIndex: destination.index,
+        })
       );
-
-      const tempIssues = { ...filteredIssues };
-      tempIssues[source.droppableId] = items;
-      setFilteredIssues({ ...tempIssues });
     } else {
-      // dispatch(
-      //   changeIssueCompletedState({
-      //     id: dropableIssue,
-      //     completedState: destination.droppableId,
-      //   })
-      // );
-      const srcItems = remove(filteredIssues[source.droppableId], source.index);
-
-      const destItems = appendAt(
-        filteredIssues[destination.droppableId],
-        destination.index,
-        filteredIssues[source.droppableId][source.index]
+      dispatch(
+        changeIssueCompletedState({
+          id: dropableIssue,
+          completedState: destination.droppableId,
+        })
       );
-
-      const tempIssues = { ...filteredIssues };
-      tempIssues[source.droppableId] = srcItems;
-      tempIssues[destination.droppableId] = destItems;
-      setFilteredIssues({ ...tempIssues });
     }
   };
 
@@ -76,17 +57,17 @@ export const Layout = () => {
           >
             <KanbanList
               title={"ToDo"}
-              issues={filteredIssues.open || []}
+              issues={filteredIssues(issues, "open")}
               issuesState={"open"}
             />
             <KanbanList
               title={"In Progress"}
-              issues={filteredIssues.inProgress || []}
+              issues={filteredIssues(issues, "inProgress")}
               issuesState={"inProgress"}
             />
             <KanbanList
               title={"Done"}
-              issues={filteredIssues.closed || []}
+              issues={filteredIssues(issues, "closed")}
               issuesState={"closed"}
             />
           </SimpleGrid>
