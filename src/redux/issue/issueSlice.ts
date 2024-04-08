@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { fetchUserRepoInfo, fetchUserRepoIsses } from "./operations";
-import { Issue, IssueState } from "../../interfaces/issue";
+import { Issue, IssueState } from "../../interfaces/Issue";
 
 const initialState: IssueState = {
   issues: [],

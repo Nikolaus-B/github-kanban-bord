@@ -1,6 +1,6 @@
 import { Box, Flex, List, Text } from "@chakra-ui/react";
 import { KanbanItem } from "../KanbanItem/KanbanItem";
-import { Issue } from "../../interfaces/issue";
+import { Issue } from "../../interfaces/Issue";
 import { Draggable } from "react-beautiful-dnd";
 import { StrictModeDroppable } from "../StrictModeDroppable/StrictModeDroppable";
 
