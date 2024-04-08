@@ -57,15 +57,14 @@ const issueSlice = createSlice({
     },
     changeIssueCompletedState: (state, action) => {
       const { id, completedState } = action.payload;
-      console.log(id, completedState);
+      // console.log(id, completedState);
 
       const index = state.issues.findIndex((issue) => issue.id === Number(id));
 
-      console.log(index);
+      // console.log(index);
 
       if (index !== -1) {
         const updatedIssue = { ...state.issues[index], completedState };
-        // console.log(updatedIssue);
 
         const updatedIssues = [
           ...state.issues.slice(0, index),
@@ -74,7 +73,7 @@ const issueSlice = createSlice({
         ];
 
         state.issues = updatedIssues;
-        console.log(state.issues);
+        // console.log(state.issues);
       }
     },
   },
@@ -85,8 +84,6 @@ const issueSlice = createSlice({
       state.repoInfo.repoUrl = action.payload.html_url;
     });
     builder.addCase(fetchUserRepoIsses.fulfilled, (state, action) => {
-      console.log(action.payload);
-
       const filteredIssue: Issue[] = [];
 
       action.payload.forEach((issue: any) => {
