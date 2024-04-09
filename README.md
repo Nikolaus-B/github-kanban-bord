@@ -25,7 +25,7 @@ This is a web application developed to track issues within repositories on GitHu
 
 ## Development:
 
-- This application was developed using the Vite build tool for fast and efficient development setup. React and Redux were chosen for \* _ state management and rendering components. TypeScript was used to ensure type safety and improve code maintainability. Chakra UI was _ utilized for designing a clean and intuitive user interface.
+This application was developed using the Vite build tool for fast and efficient development setup. React and Redux were chosen for state management and rendering components. TypeScript was used to ensure type safety and improve code maintainability. Chakra UI was utilized for designing a clean and intuitive user interface.
 
 > [!TIP]
 > Getting Started:
