@@ -13,12 +13,6 @@ import {
   REGISTER,
 } from "redux-persist";
 
-// export const store = configureStore({
-//   reducer: {
-//     issues: issueReducer,
-//   },
-// });
-
 const rootReducer = combineReducers({
   issues: issueReducer,
 });
