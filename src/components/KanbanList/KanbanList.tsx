@@ -39,25 +39,37 @@ export const KanbanList: React.FC<KanbanListProps> = ({
                 flexDir="column"
                 overflowY="auto"
               >
-                {issues.map((issue: Issue, index) => {
-                  return (
-                    <Draggable
-                      key={issue.id}
-                      draggableId={issue.id.toString()}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <li
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <KanbanItem key={issue.id} issueInfo={issue} />
-                        </li>
-                      )}
-                    </Draggable>
-                  );
-                })}
+                {issues.length === 0 ? (
+                  <Box
+                    w="100%"
+                    h="100%"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Text>No issues</Text>
+                  </Box>
+                ) : (
+                  issues.map((issue: Issue, index) => {
+                    return (
+                      <Draggable
+                        key={issue.id}
+                        draggableId={issue.id.toString()}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <li
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <KanbanItem key={issue.id} issueInfo={issue} />
+                          </li>
+                        )}
+                      </Draggable>
+                    );
+                  })
+                )}
                 {provided.placeholder}
               </List>
             </div>
