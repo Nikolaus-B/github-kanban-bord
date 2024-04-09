@@ -78,7 +78,6 @@ const issueSlice = createSlice({
 
       if (repoIndex !== -1) {
         const existingIssues = state.usersRepos[repoIndex].issues;
-        console.log(existingIssues);
 
         if (existingIssues.length === 0) {
           state.usersRepos[repoIndex].issues = filteredIssues;
